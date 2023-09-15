@@ -1,6 +1,11 @@
-Create a NodeJS project and a simple server file ```app.js``` inside your NodeJS project folder. 
+Create a NodeJS project and a simple server file ```app.js``` in your NodeJS project folder. 
 
-Using the express library we can tell the server to render the angular frontend that will be built to the public folder inside our NodeJS project.
+Make sure to install these libraries in your NodeJS (backend) before you begin:
+```Bash
+npm install express body-parser cors
+```
+
+Using the express library we can tell the server to render the angular frontend that will be built to the ```public``` folder inside our NodeJS project.
 
 ```Javascript
 const express = require('express');
@@ -32,15 +37,29 @@ app.listen(PORT, () => {
 });
 ```
 
-Create an Angular project and specify the build path ```"outputPath"``` in the angular.json file to our NodeJS backend folder:
+Create an Angular project and specify the build path ```"outputPath"``` in the ```angular.json``` file to our NodeJS backend folder:
 
 ```JSON
 "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "../backend/public",
-            ...
+            ...,
           }
           ...,
 }       
+```
+
+We assume the backend and frontend folders are following this file structure:
+
+![folder structure](assets/markdown/blogs/nodejs-angular-blog/folder_structure.jpg)
+
+Build the Angular (frontend) project using the following command:
+```Bash
+ng build
+```
+
+Now run the Nodejs (backend) server (make sure you're in the backend folder):
+```Bash
+node app.js
 ```
